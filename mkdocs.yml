@@ -1,0 +1,35 @@
+site_name: FringeProject
+site_url: https://docs.fringeproject.com/
+site_description: FringeProject documentation to use the tools.
+site_author: FringeProject Team
+
+google_analytics:
+  - UA-128044070-1
+  - auto
+
+theme:
+  name: readthedocs
+  custom_dir: 'theme/'
+  static_templates:
+    - sitemap.xml
+  highlightjs: true
+  hljs_languages:
+    - clike
+    - yaml
+    - powershell
+    - bash
+    - nginx
+    - python
+    - markup
+
+markdown_extensions:
+  - markdown_new_tab
+  - markdown_prism
+
+dev_addr: 0.0.0.0:4000
+
+nav:
+  - User: user.md
+  - Runner: runner.md
+  - API: api.md
+  - Development: development.md

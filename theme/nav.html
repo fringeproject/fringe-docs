@@ -1,0 +1,22 @@
+{%- if nav_item.is_section %}
+    <span class="section-link {% if nav_item.active%}active{%endif%}">{{ nav_item.title }}</span>
+{%- else %}
+    <a class="section-link" href="{{ nav_item.url|url }}">{{ nav_item.title }}</a>
+{%- endif %}
+
+{%- if nav_item == page or nav_item.children %}
+    <ul>
+        {%- if nav_item == page %}
+            {% include 'toc.html' %}
+        {%- endif %}
+        {%- if nav_item.children %}
+            {%- set navlevel = navlevel + 1%}
+            {%- for nav_item in nav_item.children %}
+                <li class="{% if nav_item.active%}active{%endif%}">
+                    {% include 'nav.html' %}
+                </li>
+            {%- endfor %}
+            {%- set navlevel = navlevel - 1%}
+        {%- endif %}
+    </ul>
+{%- endif %}
