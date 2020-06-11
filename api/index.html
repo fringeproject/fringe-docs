@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="FringeProject Team">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>API - FringeProject</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "API";
+    var mkdocs_page_input_path = "api.md";
+    var mkdocs_page_url = "/api/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script> 
+</head>
+
+<body class="ready sticky">
+  <button class="sidebar-toggle">
+    <div class="sidebar-toggle-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <main>
+    
+    <aside class="sidebar">
+      <div class="search">
+	<div class="input-wrap">
+		<form action="../search.html" method="get">
+			<input type="search" name="q" placeholder="Search docs" title="Type search term here" />
+		</form>
+	</div>
+</div>
+
+      <h1 class="app-name"><a class="app-name-link" data-nosearch="" href="/">FringeProject</a></h1>
+
+      <div class="sidebar-nav">
+        <ul>
+    	    
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../user/">User</a>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../runner/">Runner</a>
+          </li>
+          
+          <li class="bold active">
+		        
+    <a class="section-link" href="./">API</a>
+    <ul>
+            
+    
+    <ul>
+    
+        <li><a class="" href="#overview">Overview</a></li>
+    
+        <li><a class="" href="#basic-usage">Basic usage</a></li>
+    
+    </ul>
+    
+
+    </ul>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../development/">Development</a>
+          </li>
+          
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      
+      <article class="markdown-section" id="main">
+        <div role="main">
+          <div class="section">
+            
+              <h1 id="api">API</h1>
+<h2 id="overview">Overview</h2>
+<p>The Frontend (<code>fringe-frontend</code>) uses the API from the backend (<code>fringe-core</code>).
+You are free to use the API directly without using the Web page.</p>
+<h2 id="basic-usage">Basic usage</h2>
+<p>The API is available on the <code>api</code> subdomain of <code>fringeproject.com</code>.</p>
+<p>Here is an example of a valid API call:</p>
+<pre><code class="language-bash">curl &quot;https://api.fringeproject.com/api/search?q=uber.com&quot;
+</code></pre>
+
+<p>The API returns data using the JSON format.</p>
+<h3 id="authentication">Authentication</h3>
+<p>Most of the endpoints require authentication. So you need a valid session to
+requests private data or bypass daily-request-quota.</p>
+<pre><code class="language-bash">curl -H &quot;Content-Type: application/json&quot; \
+     -d '{&quot;username&quot;: &quot;YOUR USERNAME&quot;, &quot;password&quot;: &quot;YOUR PASSWORD&quot;}' \
+     -X POST &quot;https://api.fringeproject.com/api/accounts/login&quot;
+</code></pre>
+
+<h3 id="session">Session</h3>
+<p>As we are still developing, we are providing a dead simple cookie to authenticate
+users.</p>
+<h3 id="endpoints">Endpoints</h3>
+<p>As the API endpoints are evolving everyday, we cannot provide an accurate list of
+endpoint and call examples. But you can check how the <code>fringe-frontend</code> use the API.</p>
+<h3 id="rate-limit">Rate Limit</h3>
+<p>There is a rate limit set for anonymous and authenticated users. The current
+limits are:</p>
+<ul>
+<li>Anonymous users: <code>100 requests/day</code>.</li>
+<li>Authenticated users: <code>1000 requests/day</code>.</li>
+</ul>
+<p>For anonymous users, the limit is set based on your IP. So if you change your IP
+(hello Tor!), you may request more data.</p>
+            
+          </div>
+          <footer>
+  <hr/>
+  <div class="content-info">
+    <a class="icon" href="https://github.com/fringeproject" rel="noopener noreferrer" target="_blank">Github</a> · <small>Cooked with <span role="img" aria-label="love">❤️</span> in Paris</small>
+  </div>
+</footer>
+      
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../runner/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../development/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/prism-core.min.js"></script>
+    <script src="../js/prism-clike.min.js"></script>
+    <script src="../js/prism-yaml.min.js"></script>
+    <script src="../js/prism-powershell.min.js"></script>
+    <script src="../js/prism-bash.min.js"></script>
+    <script src="../js/prism-nginx.min.js"></script>
+    <script src="../js/prism-python.min.js"></script>
+    <script src="../js/prism-markup.min.js"></script>
+    <script src="../search/main.js"></script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-128044070-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+</body>
+</html>
+
+<!-- Build Date UTC : "api.md" - 2020-06-11 20:58:11 -->

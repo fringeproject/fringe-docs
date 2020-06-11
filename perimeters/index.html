@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="FringeProject Team">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Perimeters - FringeProject</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Perimeters";
+    var mkdocs_page_input_path = "perimeters.md";
+    var mkdocs_page_url = "/perimeters/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script> 
+</head>
+
+<body class="ready sticky">
+  <button class="sidebar-toggle">
+    <div class="sidebar-toggle-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <main>
+    
+    <aside class="sidebar">
+      <div class="search">
+	<div class="input-wrap">
+		<form action="../search.html" method="get">
+			<input type="search" name="q" placeholder="Search docs" title="Type search term here" />
+		</form>
+	</div>
+</div>
+
+      <h1 class="app-name"><a class="app-name-link" data-nosearch="" href="/">FringeProject</a></h1>
+
+      <div class="sidebar-nav">
+        <ul>
+    	    
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../user/">User</a>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../runner/">Runner</a>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../api/">API</a>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../development/">Development</a>
+          </li>
+          
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      
+      <article class="markdown-section" id="main">
+        <div role="main">
+          <div class="section">
+            
+              <h1 id="perimeters">Perimeters</h1>
+<p>A Perimeter is an environment where you can add data and create your own discovery
+rules. You can see a perimeter as a new worksheet where you manage your data.
+With a <a href="../runner/">runner</a> you can find new data and do some
+active and passive scans.</p>
+<p>See a perimeter as <code>hostname</code> or <code>IP</code> you have to audit or even bug bounty program.</p>
+<h2 id="create-a-new-perimeter">Create a new perimeter</h2>
+<p>In this paragraph we will create a new perimeter for a bug-bounty program. Let's
+call it <code>First perimeter</code> and add a description such as <code>Let's try FringeProject</code>.
+If you have already so data, you can add it.</p>
+<p>Be careful, we parse only <code>hostname</code> and <code>IP</code> as data. Moreover, each data must be
+separated by a new line. Then click on "Create" and to create your first perimeter!</p>
+<h2 id="rules">Rules</h2>
+<p>On the perimeter dashboard, you should see that there is more data that you have
+previously added. Why? It's because we have created so custom rules for you. For
+example, we try to resolve every hostname to get IP addresses and we get some
+informations on IP too.</p>
+<h3 id="defaults-rules">Defaults rules</h3>
+<p>Here are the default rules:</p>
+<ul>
+<li><code>Hostname Resolution</code>: Resolve a hostname</li>
+<li><code>IP info</code>: retrieve IP informations</li>
+</ul>
+<h3 id="create-a-new-rule">Create a New Rule</h3>
+<p>You can create a new rule on you perimeter. We provide various modules that perform
+simple tasks based on some <code>perimeter events</code>.</p>
+<p>Let's create a rule that scan every new IP:</p>
+<ul>
+<li><code>rule name</code>: The name you want to give to your rule, <code>Auto TCP scan</code></li>
+<li><code>rule description</code> (optional): A description for your rule</li>
+<li><code>module</code>: Select the module to execute, here <code>nmap</code></li>
+<li><code>Perimeter event</code>: Select on what event the rule is triggered, here <code>New data</code></li>
+</ul>
+<p>Note that IP that already exists are not scan because the rule applies only to new
+IP. If you want to apply the rule to new and old IP, then you have to check the
+case <code>Apply scan to data already found</code>. Doing this we will add a new job for data
+that already exist.</p>
+<p>Now that you have your new rule, there will be a new job every time you add a new IP
+or the runner finds a new one.</p>
+<h2 id="pending-jobs">Pending Jobs</h2>
+<p>You can see the backlog of the job for your perimeter.</p>
+            
+          </div>
+          <footer>
+  <hr/>
+  <div class="content-info">
+    <a class="icon" href="https://github.com/fringeproject" rel="noopener noreferrer" target="_blank">Github</a> · <small>Cooked with <span role="img" aria-label="love">❤️</span> in Paris</small>
+  </div>
+</footer>
+      
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/prism-core.min.js"></script>
+    <script src="../js/prism-clike.min.js"></script>
+    <script src="../js/prism-yaml.min.js"></script>
+    <script src="../js/prism-powershell.min.js"></script>
+    <script src="../js/prism-bash.min.js"></script>
+    <script src="../js/prism-nginx.min.js"></script>
+    <script src="../js/prism-python.min.js"></script>
+    <script src="../js/prism-markup.min.js"></script>
+    <script src="../search/main.js"></script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-128044070-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+</body>
+</html>
+
+<!-- Build Date UTC : "perimeters.md" - 2020-06-11 20:58:11 -->

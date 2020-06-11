@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="FringeProject Team">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Runner - FringeProject</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Runner";
+    var mkdocs_page_input_path = "runner.md";
+    var mkdocs_page_url = "/runner/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script> 
+</head>
+
+<body class="ready sticky">
+  <button class="sidebar-toggle">
+    <div class="sidebar-toggle-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <main>
+    
+    <aside class="sidebar">
+      <div class="search">
+	<div class="input-wrap">
+		<form action="../search.html" method="get">
+			<input type="search" name="q" placeholder="Search docs" title="Type search term here" />
+		</form>
+	</div>
+</div>
+
+      <h1 class="app-name"><a class="app-name-link" data-nosearch="" href="/">FringeProject</a></h1>
+
+      <div class="sidebar-nav">
+        <ul>
+    	    
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../user/">User</a>
+          </li>
+          
+          <li class="bold active">
+		        
+    <a class="section-link" href="./">Runner</a>
+    <ul>
+            
+    
+    <ul>
+    
+        <li><a class="" href="#overview">Overview</a></li>
+    
+        <li><a class="" href="#installation">Installation</a></li>
+    
+        <li><a class="" href="#start-a-scan-manually">Start a scan manually</a></li>
+    
+        <li><a class="" href="#scan-using-the-backend">Scan using the backend</a></li>
+    
+        <li><a class="" href="#configuration">Configuration</a></li>
+    
+        <li><a class="" href="#resources">Resources</a></li>
+    
+        <li><a class="" href="#data-source">Data source</a></li>
+    
+    </ul>
+    
+
+    </ul>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../api/">API</a>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../development/">Development</a>
+          </li>
+          
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      
+      <article class="markdown-section" id="main">
+        <div role="main">
+          <div class="section">
+            
+              <h1 id="runner">Runner</h1>
+<p>On FringeProject, users provide assets (IP, hostname, ...). The <code>fringe-runner</code>
+gathers and retrieves information about those assets such as web pages, open
+ports, and used technologies.</p>
+<h2 id="overview">Overview</h2>
+<p>The tool that we called <code>fringe-runner</code> scans a host based on several modules. The
+user may start the runner manually to scan an asset or run it as a daemon to
+interact with the backend (<code>fringe-api</code>).</p>
+<h2 id="installation">Installation</h2>
+<p><code>fringe-runner</code> is written in Go. First, you need to <a href="https://golang.org/doc/install" target="_blank">install Go</a>.
+After this process, you can simply <code>go get</code> the tool:</p>
+<pre><code class="language-bash">go get github.com/fringeproject/fringe-runner
+</code></pre>
+
+<h3 id="buiding-from-source">Buiding from source</h3>
+<p>Clone the repository to your local machine and move to the runner folder:</p>
+<pre><code class="language-bash">git clone https://github.com/fringeproject/fringe-runner.git
+cd fringe-runner
+</code></pre>
+
+<p>As we use <a href="https://blog.golang.org/using-go-modules" target="_blank">Go Modules</a> the
+dependencies are downloaded the first time you start the runner.</p>
+<pre><code class="language-bash">go get &amp;&amp; go build
+</code></pre>
+
+<p>This will build the binary <code>fringe-runner</code>. If you want to install it to the
+Go path you can run:</p>
+<pre><code class="language-bash">go install
+</code></pre>
+
+<p>You can also build the runner yourself for multiple environments with the
+following command:</p>
+<pre><code class="language-bash">make build
+</code></pre>
+
+<p>This command build in the <code>bin</code> directory the binaries for the following OS:</p>
+<ul>
+<li><code>linux/amd64</code></li>
+<li><code>linux/386</code></li>
+<li><code>darwin/amd64</code></li>
+<li><code>darwin/386</code></li>
+<li><code>windows/amd64</code></li>
+<li><code>windows/386</code></li>
+</ul>
+<h3 id="docker">Docker</h3>
+<p>A Docker image of the latest build is available on <a href="https://hub.docker.com/r/fringeproject/fringe-runner" target="_blank">DockerHub</a>:</p>
+<pre><code class="language-bash">docker run -it --rm fringeproject/fringe-runner:latest &lt;cmd&gt;
+</code></pre>
+
+<p>You can also build the image yourself:</p>
+<pre><code class="language-bash">docker build .
+---&gt; &lt;image_id&gt;
+docker run -it &lt;image_id&gt; &lt;cmd&gt;
+</code></pre>
+
+<h3 id="update-the-resources">Update the resources</h3>
+<p>Once you install the binary, the following command displays the information
+about the runner:</p>
+<pre><code class="language-bash">fringe-runner --version
+Version:      development version
+Git revision: HEAD
+Git branch:   HEAD
+GO version:   go1.14.3
+Built:        unknown
+OS/Arch:      darwin/amd64
+</code></pre>
+
+<p>Then, you need to download the resources (wordlist, ...) to the fringe folder:</p>
+<pre><code class="language-bash">fringe-runner update
+</code></pre>
+
+<h2 id="start-a-scan-manually">Start a scan manually</h2>
+<p>First, you list the modules available:</p>
+<pre><code class="language-bash">fringe-runner module -l
+</code></pre>
+
+<p>This command outputs a list of modules as a JSON format. Choose one of them, for
+instance <code>crtsh</code> to get the subdomains of a <code>hostname</code> using the service <a href="https://crt.sh/" target="_blank">crt.sh</a>:</p>
+<pre><code class="language-bash">fringe-runner module -e crtsh uber.com
+</code></pre>
+
+<p>Based on the results of the service, the runner outputs a list of new assets.</p>
+<h2 id="scan-using-the-backend">Scan using the backend</h2>
+<p>The scans are triggered using perimeter rules from the backend. For example, when
+there is a new <code>hostname</code>, then we resolve it to get IP addresses and
+we try to find new subdomains using OSINT techniques. The new assets are also
+added to the scan pool to find more new assets.</p>
+<p>Each time there is a new module to be called be the runner, we call this a <code>job</code>.</p>
+<p>On your perimeter, we'll provided the ability to add a new runner. Configure the
+runner with the <code>config.yml</code> file, the you can start scanning your perimeter with:</p>
+<pre><code class="language-bash">fringe-runner run
+</code></pre>
+
+<h2 id="configuration">Configuration</h2>
+<p>You can pass configuration as a <a href="https://yaml.org/" target="_blank">YAML</a> file. There is an example
+in the <a href="https://github.com/fringeproject/fringe-runner/blob/master/config.yml" target="_blank">repository</a>.</p>
+<p>You can pass the configuration path as an argument to <code>-c/--config</code>:</p>
+<pre><code class="language-bash">fringe-runner -c file/path/config.yml &lt;other arguments&gt;
+</code></pre>
+
+<p>By default, the runner looks for the file <code>.fringe-runner.yml</code> in the user home
+directory (<code>~/.fringe-runner.yml</code> or <code>%USERPROFILE%\.fringe-runner.yml</code> on Windows).</p>
+<h2 id="resources">Resources</h2>
+<p>The runner uses resources to work properly. For instance, the <code>wappalyzer</code>
+module needs the database file name <code>wappalyzer.json</code>.</p>
+<p>It downloads the resources with the <code>update</code> command and stores these in the
+directory set as <code>resources</code> in the configuration file.</p>
+<p>If there is no configuration file or the <code>resources</code> set, the the following path
+will be used:</p>
+<pre><code>$HOME/.fringe-runner/resources/
+</code></pre>
+
+<p>Where <code>HOME</code> is the user home directory (<code>%USERPROFILE%</code> on Windows).</p>
+<h2 id="data-source">Data source</h2>
+<p>The <code>fringe-runner</code> scans the Internet for you to find augment the data you provide.
+To achieve this, we collect information using modules:</p>
+<ul>
+<li>Scan modules: Ask the information directly to the source. That mean we scan
+for web pages, open ports and available services.</li>
+<li>Public sources modules: Ask informations about a source to a public source
+(such as <a href="https://www.shodan.io/" target="_blank">Shodan</a> or <a href="https://crt.sh/" target="_blank">Crt.sh</a>).</li>
+</ul>
+<p>There is a list of available modules in the <a href="https://github.com/fringeproject/fringe-runner/#available-modules" target="_blank">README on the repository</a></p>
+<p>If you don't want to be scanned please send a e-mail to <a href="mailto:contact@fringeproject.com">contact@fringeproject.com</a>.</p>
+<p>Please note that users may use the runner on their own. We are not responsible for
+any harm related to the use of <code>fringe-runner</code>.</p>
+            
+          </div>
+          <footer>
+  <hr/>
+  <div class="content-info">
+    <a class="icon" href="https://github.com/fringeproject" rel="noopener noreferrer" target="_blank">Github</a> · <small>Cooked with <span role="img" aria-label="love">❤️</span> in Paris</small>
+  </div>
+</footer>
+      
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../user/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../api/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/prism-core.min.js"></script>
+    <script src="../js/prism-clike.min.js"></script>
+    <script src="../js/prism-yaml.min.js"></script>
+    <script src="../js/prism-powershell.min.js"></script>
+    <script src="../js/prism-bash.min.js"></script>
+    <script src="../js/prism-nginx.min.js"></script>
+    <script src="../js/prism-python.min.js"></script>
+    <script src="../js/prism-markup.min.js"></script>
+    <script src="../search/main.js"></script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-128044070-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+</body>
+</html>
+
+<!-- Build Date UTC : "runner.md" - 2020-06-11 20:58:11 -->

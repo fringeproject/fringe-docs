@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="FringeProject Team">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>User - FringeProject</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "User";
+    var mkdocs_page_input_path = "user.md";
+    var mkdocs_page_url = "/user/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script> 
+</head>
+
+<body class="ready sticky">
+  <button class="sidebar-toggle">
+    <div class="sidebar-toggle-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <main>
+    
+    <aside class="sidebar">
+      <div class="search">
+	<div class="input-wrap">
+		<form action="../search.html" method="get">
+			<input type="search" name="q" placeholder="Search docs" title="Type search term here" />
+		</form>
+	</div>
+</div>
+
+      <h1 class="app-name"><a class="app-name-link" data-nosearch="" href="/">FringeProject</a></h1>
+
+      <div class="sidebar-nav">
+        <ul>
+    	    
+          
+          <li class="bold active">
+		        
+    <a class="section-link" href="./">User</a>
+    <ul>
+            
+    
+    <ul>
+    
+        <li><a class="" href="#overview">Overview</a></li>
+    
+        <li><a class="" href="#use-cases">Use cases</a></li>
+    
+        <li><a class="" href="#account">Account</a></li>
+    
+    </ul>
+    
+
+    </ul>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../runner/">Runner</a>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../api/">API</a>
+          </li>
+          
+          <li class="bold">
+		        
+    <a class="section-link" href="../development/">Development</a>
+          </li>
+          
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      
+      <article class="markdown-section" id="main">
+        <div role="main">
+          <div class="section">
+            
+              <h1 id="user-documentation">User documentation</h1>
+<h2 id="overview">Overview</h2>
+<p>FringeProject allows you to scan and search through various source of information
+to discover assets and vulnerabilities.</p>
+<h2 id="use-cases">Use cases</h2>
+<p>There is several thing you can do with FringeProject:</p>
+<ul>
+<li>Search through the public database</li>
+<li>Add an asset we don't find yet</li>
+</ul>
+<h3 id="search-an-asset">Search an asset</h3>
+<p>You can search in the public perimeter using the following link:
+<a href="https://fringeproject.com/search" target="_blank">https://fringeproject.com/search</a></p>
+<h3 id="add-a-new-asset">Add a new asset</h3>
+<p>When you add a new asset, we parse it and attach a <code>data-type</code>. It can be:</p>
+<ul>
+<li>IP: represents a IPv4 (no IPv6 supported for now)</li>
+<li>Hostname: represents a domain (<code>fringeproject.com</code>) or a subdomain (<code>docs.fringeproject.com</code>)</li>
+<li>URL: represents a URL with a Host (IP or Hostname), a Port and a Path</li>
+</ul>
+<p>We plan to add other data later such as IPv6, TCP/UDP ports or even CIDR.</p>
+<h2 id="account">Account</h2>
+<p>You can browse a limited number of asset without being authenticated. If you want to
+access more features (search more assets, create a perimeter, ...), you will need
+an account. You sign up to create a new account <a href="https://fringeproject.com/create" target="_blank">here</a>
+or sign in with an existing one <a href="https://fringeproject.com/login" target="_blank">here</a>.</p>
+<h3 id="account-settings">Account settings</h3>
+<p>You can view your profile <a href="https://fringeproject.com/settings/profile" target="_blank">here</a>.
+We grab your avatar from <a href="https://gravatar.com/" target="_blank">Gravatar</a> based on the email
+address you provide.</p>
+<h3 id="limitation">Limitation</h3>
+<p>An anonymous user is limited to make <code>100 requests/day</code>. If you want to get more
+data, then you need to login. With an authenticated user, the limit is set at
+<code>1000 requests/day</code>.</p>
+            
+          </div>
+          <footer>
+  <hr/>
+  <div class="content-info">
+    <a class="icon" href="https://github.com/fringeproject" rel="noopener noreferrer" target="_blank">Github</a> · <small>Cooked with <span role="img" aria-label="love">❤️</span> in Paris</small>
+  </div>
+</footer>
+      
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="../runner/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/prism-core.min.js"></script>
+    <script src="../js/prism-clike.min.js"></script>
+    <script src="../js/prism-yaml.min.js"></script>
+    <script src="../js/prism-powershell.min.js"></script>
+    <script src="../js/prism-bash.min.js"></script>
+    <script src="../js/prism-nginx.min.js"></script>
+    <script src="../js/prism-python.min.js"></script>
+    <script src="../js/prism-markup.min.js"></script>
+    <script src="../search/main.js"></script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-128044070-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+</body>
+</html>
+
+<!-- Build Date UTC : "user.md" - 2020-06-11 20:58:11 -->
