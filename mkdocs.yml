@@ -32,4 +32,5 @@ nav:
   - User: user.md
   - Runner: runner.md
   - API: api.md
+  - Workflows: workflows.md
   - Development: development.md

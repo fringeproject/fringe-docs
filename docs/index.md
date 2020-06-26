@@ -10,5 +10,6 @@ You can find documentation for:
 
 - [User and how to use the website](./user.md)
 - [Runner and how we scan the Internet](./runner.md)
+- [How to create a workflow with a runner](./workflows.md)
 - [The API to search and add assets](./api.md)
 
