@@ -8,14 +8,14 @@
   
   <meta name="author" content="FringeProject Team">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Perimeters - FringeProject</title>
+  <title>Workflows - FringeProject</title>
   <link rel="stylesheet" href="../css/style.css" type="text/css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Perimeters";
-    var mkdocs_page_input_path = "perimeters.md";
-    var mkdocs_page_url = "/perimeters/";
+    var mkdocs_page_name = "Workflows";
+    var mkdocs_page_input_path = "workflows.md";
+    var mkdocs_page_url = "/workflows/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -63,9 +63,24 @@
     <a class="section-link" href="../api/">API</a>
           </li>
           
-          <li class="bold">
+          <li class="bold active">
 		        
-    <a class="section-link" href="../workflows/">Workflows</a>
+    <a class="section-link" href="./">Workflows</a>
+    <ul>
+            
+    
+    <ul>
+    
+        <li><a class="" href="#create-a-workflow-file">Create a workflow file</a></li>
+    
+        <li><a class="" href="#workflow-syntax">Workflow syntax</a></li>
+    
+        <li><a class="" href="#use-a-workflow">Use a workflow</a></li>
+    
+    </ul>
+    
+
+    </ul>
           </li>
           
           <li class="bold">
@@ -83,47 +98,63 @@
         <div role="main">
           <div class="section">
             
-              <h1 id="perimeters">Perimeters</h1>
-<p>A Perimeter is an environment where you can add data and create your own discovery
-rules. You can see a perimeter as a new worksheet where you manage your data.
-With a <a href="../runner/">runner</a> you can find new data and do some
-active and passive scans.</p>
-<p>See a perimeter as <code>hostname</code> or <code>IP</code> you have to audit or even bug bounty program.</p>
-<h2 id="create-a-new-perimeter">Create a new perimeter</h2>
-<p>In this paragraph we will create a new perimeter for a bug-bounty program. Let's
-call it <code>First perimeter</code> and add a description such as <code>Let's try FringeProject</code>.
-If you have already so data, you can add it.</p>
-<p>Be careful, we parse only <code>hostname</code> and <code>IP</code> as data. Moreover, each data must be
-separated by a new line. Then click on "Create" and to create your first perimeter!</p>
-<h2 id="rules">Rules</h2>
-<p>On the perimeter dashboard, you should see that there is more data that you have
-previously added. Why? It's because we have created so custom rules for you. For
-example, we try to resolve every hostname to get IP addresses and we get some
-informations on IP too.</p>
-<h3 id="defaults-rules">Defaults rules</h3>
-<p>Here are the default rules:</p>
+              <h1 id="workflows">Workflows</h1>
+<p>A workflow is an automated process to start jobs. You can create workflows to
+automate assets discovery within a <a href="../runner/"><code>fringe-runner</code></a>.</p>
+<h2 id="create-a-workflow-file">Create a workflow file</h2>
+<p>A workflow file is a <code>YAML</code> file with a specific structure. The syntax is
+borrowed from <a href="https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions" target="_blank"><strong>Github Actions</strong></a>.</p>
+<p>An example of a workflow file:</p>
+<pre><code class="language-yaml"># The name of the workflow
+name: Find subdomains
+
+
+# The event that triggers the workflow
+on:
+  # When the runner find a new asset
+  new_asset:
+    # The asset must be a hostname
+    types: hostname
+    # The asset must respect the following regex
+    regex: .*\.uber\.com
+
+
+# The jobs to execute
+jobs:
+  - name: Auto crt.sh
+    module: crtsh
+
+  - name: Auto Sublist3r
+    module: sublist3r
+</code></pre>
+
+<h2 id="workflow-syntax">Workflow syntax</h2>
+<h3 id="name">name</h3>
+<p>The name of the workflow.</p>
+<h3 id="on">on</h3>
+<p>We provide the following event name:</p>
 <ul>
-<li><code>Hostname Resolution</code>: Resolve a hostname</li>
-<li><code>IP info</code>: retrieve IP informations</li>
+<li><code>new_asset</code> - this event is triggered when the runner find a new asset</li>
 </ul>
-<h3 id="create-a-new-rule">Create a New Rule</h3>
-<p>You can create a new rule on you perimeter. We provide various modules that perform
-simple tasks based on some <code>perimeter events</code>.</p>
-<p>Let's create a rule that scan every new IP:</p>
+<h4 id="onnew_asset">on.new_asset</h4>
+<p>You must select a <code>data-type</code> for the new asset. We trigger the workflow if the
+new asset has the correct <code>data-type</code>. You can also specify a regex to filter
+the new assets.</p>
 <ul>
-<li><code>rule name</code>: The name you want to give to your rule, <code>Auto TCP scan</code></li>
-<li><code>rule description</code> (optional): A description for your rule</li>
-<li><code>module</code>: Select the module to execute, here <code>nmap</code></li>
-<li><code>Perimeter event</code>: Select on what event the rule is triggered, here <code>New data</code></li>
+<li><code>types</code> - the asset <code>data-type</code> (<code>hostname</code>, <code>url</code>, <code>ip</code>)</li>
+<li><code>regex</code> - an optional regex to filter the assets</li>
 </ul>
-<p>Note that IP that already exists are not scan because the rule applies only to new
-IP. If you want to apply the rule to new and old IP, then you have to check the
-case <code>Apply scan to data already found</code>. Doing this we will add a new job for data
-that already exist.</p>
-<p>Now that you have your new rule, there will be a new job every time you add a new IP
-or the runner finds a new one.</p>
-<h2 id="pending-jobs">Pending Jobs</h2>
-<p>You can see the backlog of the job for your perimeter.</p>
+<h3 id="jobs">jobs</h3>
+<p>This is a list of modules to execute. The elements of the list are objects with
+the following fields:</p>
+<ul>
+<li><code>name</code> - the name of the job</li>
+<li><code>module</code> - the slug of the module to execute</li>
+</ul>
+<h2 id="use-a-workflow">Use a workflow</h2>
+<p>The following command trigger a workflow:</p>
+<pre><code class="language-bash">fringe-runner workflow -p path/workflows/find_subdomains.yml uber.com
+</code></pre>
             
           </div>
           <footer>
@@ -142,6 +173,10 @@ or the runner finds a new one.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../development/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -171,4 +206,4 @@ or the runner finds a new one.</p>
 </body>
 </html>
 
-<!-- Build Date UTC : "perimeters.md" - 2020-06-26 16:55:37 -->
+<!-- Build Date UTC : "workflows.md" - 2020-06-26 16:55:37 -->
