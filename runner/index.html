@@ -179,12 +179,12 @@ OS/Arch:      darwin/amd64
 
 <h2 id="start-a-scan-manually">Start a scan manually</h2>
 <p>First, you list the modules available:</p>
-<pre><code class="language-bash">fringe-runner module -l
+<pre><code class="language-bash">fringe-runner module -L
 </code></pre>
 
 <p>This command outputs a list of modules as a JSON format. Choose one of them, for
 instance <code>crtsh</code> to get the subdomains of a <code>hostname</code> using the service <a href="https://crt.sh/" target="_blank">crt.sh</a>:</p>
-<pre><code class="language-bash">fringe-runner module -e crtsh uber.com
+<pre><code class="language-bash">fringe-runner module -m crtsh -a uber.com
 </code></pre>
 
 <p>Based on the results of the service, the runner outputs a list of new assets.</p>
@@ -283,4 +283,4 @@ any harm related to the use of <code>fringe-runner</code>.</p>
 </body>
 </html>
 
-<!-- Build Date UTC : "runner.md" - 2020-06-26 16:55:37 -->
+<!-- Build Date UTC : "runner.md" - 2020-07-03 05:56:46 -->
