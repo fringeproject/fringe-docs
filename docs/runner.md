@@ -105,14 +105,14 @@ fringe-runner update
 First, you list the modules available:
 
 ```bash
-fringe-runner module -l
+fringe-runner module -L
 ```
 
 This command outputs a list of modules as a JSON format. Choose one of them, for
 instance `crtsh` to get the subdomains of a `hostname` using the service [crt.sh](https://crt.sh/):
 
 ```bash
-fringe-runner module -e crtsh uber.com
+fringe-runner module -m crtsh -a uber.com
 ```
 
 Based on the results of the service, the runner outputs a list of new assets.

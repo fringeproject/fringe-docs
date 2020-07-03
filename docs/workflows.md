@@ -72,5 +72,5 @@ the following fields:
 The following command trigger a workflow:
 
 ```bash
-fringe-runner workflow -p path/workflows/find_subdomains.yml uber.com
+fringe-runner module -m crtsh -a uber.com -w path/workflow.yml
 ```
